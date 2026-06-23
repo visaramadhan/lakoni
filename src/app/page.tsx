@@ -93,10 +93,17 @@ const members = [
   {
     name: "Visa Ramadhan",
     linkedin: "https://www.linkedin.com/in/visa-ramadhan-842960304/",
+    roles: ["PM", "System Analyst", "FE Developer"],
   },
   {
     name: "Claudio Nehemia",
     linkedin: "https://www.linkedin.com/in/claudio-nehemia/",
+    roles: ["Fullstack Developer", "AI Engineer"],
+  },
+  {
+    name: "Sasty Utari Arimbi",
+    linkedin: "#",
+    roles: ["QA Engineer", "UI/UX Designer"],
   },
 ];
 
@@ -231,6 +238,7 @@ const translations = {
       title: "Our Member",
       desc: "We provide a team with strong project management and have delivered 20+ projects for internal company systems and the banking industry.",
       linkedin: "LinkedIn",
+      roles: "Roles",
     },
     projects: {
       title: "Projects",
@@ -258,6 +266,7 @@ const translations = {
       title: "Anggota Tim",
       desc: "Kami menyediakan tim dengan manajemen project yang baik dan telah mengerjakan lebih dari 20 project Sistem Internal Perusahaan dan Banking Industries.",
       linkedin: "LinkedIn",
+      roles: "Peran",
     },
     projects: {
       title: "Proyek",
@@ -857,15 +866,30 @@ export default function Home() {
                       <h3 className="text-base sm:text-lg font-bold text-gray-800 truncate">
                         {member.name}
                       </h3>
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105"
-                      >
-                        <FaLinkedin className="text-sm sm:text-base" />
-                        {translations[language].members.linkedin}
-                      </a>
+                      <p className="mt-2 text-xs sm:text-sm font-semibold text-gray-600">
+                        {translations[language].members.roles}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {member.roles.map((role) => (
+                          <span
+                            key={role}
+                            className="px-2.5 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-xs font-medium border border-emerald-200"
+                          >
+                            {role}
+                          </span>
+                        ))}
+                      </div>
+                      {member.linkedin !== "#" && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105"
+                        >
+                          <FaLinkedin className="text-sm sm:text-base" />
+                          {translations[language].members.linkedin}
+                        </a>
+                      )}
                     </div>
                   </div>
                 </AnimatedCard>
